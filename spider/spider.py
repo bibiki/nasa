@@ -10,7 +10,7 @@ headers = {
     "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0",
 }
 
-result = ""
+result = []
 
 print("********************")
 #----------manx.news
@@ -20,7 +20,7 @@ soup = BeautifulSoup(html.unescape(req.text), "html.parser")
 
 for e in soup.select("h3.entry-title a"):
     if "javascript" not in e['href']:
-        result += e['href'] + "\n"
+        result.append(e['href'])
 #        print(e)
 #------------------
 print("********************")
@@ -30,7 +30,7 @@ req = requests.get(url, headers)
 soup = BeautifulSoup(html.unescape(req.text), "html.parser")
 for e in soup.select("div div div div div.inner_wrapper div a"):
     if 'class' not in e and "news" in e['href'] and e['href'][-1] in "0123456789":
-        result = result + "https://iomtoday.co.im" + e['href'] +"\n"
+        result.append("https://iomtoday.co.im" + e['href'])
 #        print("https://iomtoday.co.im" + e['href'])
 #------------------------
 print("********************")
@@ -39,8 +39,12 @@ url = "https://gef.im/"
 req = requests.get(url, headers)
 soup = BeautifulSoup(html.unescape(req.text), "html.parser")
 for e in soup.select("div.mvp-widget-feat2-right a"):
-    result = result + e['href'] +"\n"
+    result.append(e['href'])
 #    print(e['href'])
 
+def mapper(link):
+    return "<a href=\""+link+"\">"+link+"</a></br>"
+
+result = map(mapper, result)
 with open("../docs/index.html", "w", encoding="utf-8") as f:
-    f.write(result)
+    f.write("".join(result))
