@@ -16,7 +16,7 @@ def mapper_manx(link):
     return "<a href=\""+link+"\">"+headline_manx(link)+"</a></br>"
 
 def headline_manx(link):
-    res = link[23:].split("-")
+    res = link[22:].split("-")
     res = map(lambda x: x.capitalize(), res)
     return " ".join(res).replace("/", "")
 
@@ -62,7 +62,7 @@ def headline_gef(link):
     res = link[21:].split("-")
     res.pop()
     if "/" in res[0]:
-        res[0] = res[0][res[0].index("/"):]
+        res[0] = res[0][res[0].index("/") + 1:]
     res = map(lambda x: x.capitalize(), res)
     return " ".join(res)
 
