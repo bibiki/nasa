@@ -50,12 +50,38 @@ def crawl_gef(url, headers):
     return "</br>".join(result)
 #-----------------------
 url = "https://www.manx.news/"
-result = "<div>"+crawl_manx(url, headers)+"</div>"
+result = "<div class=\"column\">"+crawl_manx(url, headers)+"</div>"
 url = "https://www.iomtoday.co.im/news"
-result += "<div>"+crawl_iomtoday(url, headers)+"</div>"
+result += "<div class=\"column\">"+crawl_iomtoday(url, headers)+"</div>"
 url = "https://gef.im/"
-result += "<div>"+crawl_gef(url, headers)+"</div>"
-result = "<div>"+result+"</div>"
+result += "<div class=\"column\">"+crawl_gef(url, headers)+"</div>"
+result = "<div class=\"container\">"+result+"</div>"
+
+result = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    .container {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+    .column {
+      flex: 1;
+      background: #e3f2fd;
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body>
+""" + result + "</body></html>"
 
 with open("../docs/index.html", "w", encoding="utf-8") as f:
     f.write("".join(result))
