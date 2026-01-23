@@ -6,9 +6,6 @@
 cd spider
 python3 spider.py
 cd ..
-echo "^^^^"
-pwd
-echo "^^^^"
 git status
 git add .
 git commit -m "updating site ${EPOCHSECONDS}"
