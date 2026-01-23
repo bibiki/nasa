@@ -63,7 +63,7 @@ def headline_gef(link):
     res = link[20:].split("-")
     res.pop()
     if "/" in res[0]:
-        res[0] = res[0][res[0.index("/"):]]
+        res[0] = res[0][res[0].index("/"):]
     res = map(lambda x: x.capitalize(), res)
     return " ".join(res)
 
