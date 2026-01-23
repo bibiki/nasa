@@ -19,7 +19,7 @@ def headline_manx(link):
     res = link.split("-")
     res[0] = res[0][res[0].rindex("/")]
     res = map(lambda x: x.capitalize(), res)
-    return " ".join(res)
+    return " ".join(res).replace("/", "")
 
 def crawl_manx(url, headers):
     req = requests.get(url, headers)
@@ -37,7 +37,12 @@ def mapper_iomtoday(link):
     return "<a href=\""+link+"\">"+headline_iomtoday(link)+"</a></br>"
 
 def headline_iomtoday(link):
-    return link[28:].replace("-", " ")
+    res = link[28:].split("-")
+    if "/" in res[0]:
+        res[0] = res[0][res[0].index("/"):]
+    res.pop()
+    res = map(lambda x: x.capitalize(), res)
+    return " ".join(res)
 
 def crawl_iomtoday(url, headers):
     req = requests.get(url, headers)
@@ -55,7 +60,7 @@ def mapper_gef(link):
     return "<a href=\""+link+"\">"+headline_gef(link)+"</a></br>"
 
 def headline_gef(link):
-    return link[27:]
+    return link
 
 def crawl_gef(url, headers):
     req = requests.get(url, headers)
