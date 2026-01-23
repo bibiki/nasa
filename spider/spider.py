@@ -39,7 +39,7 @@ def mapper_iomtoday(link):
 def headline_iomtoday(link):
     res = link[28:].split("-")
     if "/" in res[0]:
-        res[0] = res[0][res[0].index("/"):]
+        res[0] = res[0][res[0].index("/") + 1:]
     res.pop()
     res = map(lambda x: x.capitalize(), res)
     return " ".join(res)
@@ -60,7 +60,12 @@ def mapper_gef(link):
     return "<a href=\""+link+"\">"+headline_gef(link)+"</a></br>"
 
 def headline_gef(link):
-    return link
+    res = link[20:].split("-")
+    res.pop()
+    if "/" in res[0]:
+        res[0] = res[0][res[0.index("/"):]]
+    res = map(lambda x: x.capitalize(), res)
+    return " ".join(res)
 
 def crawl_gef(url, headers):
     req = requests.get(url, headers)
