@@ -13,10 +13,13 @@ headers = {
 result = []
 #----------manx.news
 def mapper_manx(link):
-    return "<a href=\""+headline_manx(link)+"\">"+link+"</a></br>"
+    return "<a href=\""+link+"\">"+headline_manx(link)+"</a></br>"
 
 def headline_manx(link):
-    return link[22:].replace("-", " ")
+    res = link.split("-")
+    res[0] = res[0][res[0].rindex("/")]
+    res = map(lambda x: x.capitalize(), res)
+    return " ".join(res)
 
 def crawl_manx(url, headers):
     req = requests.get(url, headers)
