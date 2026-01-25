@@ -3,23 +3,303 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NASA – Today's Headlines</title>
   <style>
-    .container {
-      display: flex;
-      gap: 16px;
-      padding: 20px;
-      max-width: 900px;
-      margin: 20px auto;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .column {
-      flex: 1;
-      background: #e3f2fd;
-      padding: 24px;
-      border-radius: 8px;
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Banner / Ad space */
+    .banner {
+      background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+      color: white;
       text-align: center;
-      font-family: system-ui, sans-serif;
+      padding: 90px 20px 70px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .banner h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .banner p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Main grid - three columns */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
+      padding: 20px 0 60px;
+    }
+
+    .column {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .column-header {
+      background: #0d47a1;
+      color: white;
+      padding: 16px 20px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-bottom: 1px solid #0b3d8c;
+    }
+
+    .story-list {
+      padding: 12px 0;
+    }
+
+    .story {
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.12s;
+    }
+
+    .story:hover {
+      background-color: #f8fbff;
+    }
+
+    .story:last-child {
+      border-bottom: none;
+    }
+
+    .story a {
+      color: #0d47a1;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      display: block;
+    }
+
+    .story a:hover {
+      color: #003087;
+      text-decoration: underline;
+    }
+
+    .story-time {
+      font-size: 0.82rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .banner {
+        padding: 70px 16px 50px;
+      }
+      
+      .banner h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-<div class="container"><div class="column"><a href="https://www.manx.news/rodd-in-six-nations-squad/">Rodd In Six Nations Squad</a></br></br><a href="https://www.manx.news/mhk-repeats-call-for-parking-review/">Mhk Repeats Call For Parking Review</a></br></br><a href="https://www.manx.news/controllers-flee-toxic-tower-staff-exodus-hits-ronaldsway/">Controllers Flee Toxic Tower Staff Exodus Hits Ronaldsway</a></br></br><a href="https://www.manx.news/fsa-reviewing-depositor-compo-scheme/">Fsa Reviewing Depositor Compo Scheme</a></br></br><a href="https://www.manx.news/we-need-an-independent-forensic-audit/">We Need An Independent Forensic Audit</a></br></br><a href="https://www.manx.news/controllers-flee-toxic-tower-staff-exodus-hits-ronaldsway/">Controllers Flee Toxic Tower Staff Exodus Hits Ronaldsway</a></br></br><a href="https://www.manx.news/fsa-reviewing-depositor-compo-scheme/">Fsa Reviewing Depositor Compo Scheme</a></br></br><a href="https://www.manx.news/we-need-an-independent-forensic-audit/">We Need An Independent Forensic Audit</a></br></br><a href="https://www.manx.news/island-to-host-first-ultramann/">Island To Host First Ultramann</a></br></br><a href="https://www.manx.news/2025-among-warmest-years-on-record/">2025 Among Warmest Years On Record</a></br></br><a href="https://www.manx.news/mhk-repeats-call-for-parking-review/">Mhk Repeats Call For Parking Review</a></br></br><a href="https://www.manx.news/controllers-flee-toxic-tower-staff-exodus-hits-ronaldsway/">Controllers Flee Toxic Tower Staff Exodus Hits Ronaldsway</a></br></br><a href="https://www.manx.news/we-need-an-independent-forensic-audit/">We Need An Independent Forensic Audit</a></br></br><a href="https://www.manx.news/2025-among-warmest-years-on-record/">2025 Among Warmest Years On Record</a></br></br><a href="https://www.manx.news/dealer-jailed-for-20-years/">Dealer Jailed For 20 Years</a></br></br><a href="https://www.manx.news/campaigner-warns-small-businesses-fail-quietly/">Campaigner Warns Small Businesses Fail Quietly</a></br></br><a href="https://www.manx.news/vaccines-support-considered-after-bluetongue-case/">Vaccines Support Considered After Bluetongue Case</a></br></br><a href="https://www.manx.news/25-years-of-interconnector/">25 Years Of Interconnector</a></br></br><a href="https://www.manx.news/treasury-ministers-focus-on-budget-pay-growth/">Treasury Ministers Focus On Budget Pay Growth</a></br></br><a href="https://www.manx.news/rodd-in-six-nations-squad/">Rodd In Six Nations Squad</a></br></br><a href="https://www.manx.news/island-to-host-first-ultramann/">Island To Host First Ultramann</a></br></br><a href="https://www.manx.news/douglas-play-off-challenge-maintained-despite-loss/">Douglas Play Off Challenge Maintained Despite Loss</a></br></br><a href="https://www.manx.news/christa-living-the-dream-in-kenya/">Christa Living The Dream In Kenya</a></br></br><a href="https://www.manx.news/ravens-fall-just-short-at-west-dids/">Ravens Fall Just Short At West Dids</a></br></br><a href="https://www.manx.news/manx-duo-prepare-for-atlantic-row/">Manx Duo Prepare For Atlantic Row</a></br></br><a href="https://www.manx.news/controllers-flee-toxic-tower-staff-exodus-hits-ronaldsway/">Controllers Flee Toxic Tower Staff Exodus Hits Ronaldsway</a></br></br><a href="https://www.manx.news/sackings-were-needed-to-reset-government-direction/">Sackings Were Needed To Reset Government Direction</a></br></br><a href="https://www.manx.news/the-other-island-the-bbc-documentary-that-caused-outrage/">The Other Island The Bbc Documentary That Caused Outrage</a></br></br><a href="https://www.manx.news/charlies-angle-actions-speak-louder-than-words/">Charlies Angle Actions Speak Louder Than Words</a></br></br><a href="https://www.manx.news/sailings-at-risk-4/">Sailings At Risk 4</a></br></br><a href="https://www.manx.news/treasury-ministers-focus-on-budget-pay-growth/">Treasury Ministers Focus On Budget Pay Growth</a></br></br><a href="https://www.manx.news/hooper-quits-departments/">Hooper Quits Departments</a></br></br><a href="https://www.manx.news/ravens-fall-just-short-at-west-dids/">Ravens Fall Just Short At West Dids</a></br></br><a href="https://www.manx.news/manx-duo-prepare-for-atlantic-row/">Manx Duo Prepare For Atlantic Row</a></br></div><div class="column"><a href="https://iomtoday.co.im/news/courts/appeal-judges-dismiss-bid-to-increase-drug-dealers-sentence-872355">Appeal Judges Dismiss Bid To Increase Drug Dealers Sentence</a></br></br><a href="https://iomtoday.co.im/news/onchan-man-admits-possessing-52-indecent-images-of-children-872097">Onchan Man Admits Possessing 52 Indecent Images Of Children</a></br></br><a href="https://iomtoday.co.im/news/ps10000-grant-supports-new-cpr-device-for-air-ambulance-transfers-872378">Ps10000 Grant Supports New Cpr Device For Air Ambulance Transfers</a></br></br><a href="https://iomtoday.co.im/news/rodd-named-in-england-squad-for-six-nations-872348">Rodd Named In England Squad For Six Nations</a></br></br><a href="https://iomtoday.co.im/news/public-invited-to-tour-mannin-cancers-new-ps24m-help-centre-at-open-day-860958">Public Invited To Tour Mannin Cancers New Ps24m Help Centre At Open Day</a></br></br><a href="https://iomtoday.co.im/news/new-year-same-tech-869316">New Year Same Tech</a></br></br><a href="https://iomtoday.co.im/news/the-most-prolific-drug-dealer-the-isle-of-mans-ever-seen-jailed-for-20-years-872160">The Most Prolific Drug Dealer The Isle Of Mans Ever Seen Jailed For 20 Years</a></br></br><a href="https://iomtoday.co.im/news/entertainment/isle-of-man-rockers-silo-land-london-record-deal-ahead-of-debut-release-872302">Isle Of Man Rockers Silo Land London Record Deal Ahead Of Debut Release</a></br></br><a href="https://iomtoday.co.im/news/business/continent-8-technologies-tops-gamblingiqs-security-10-rankings-872280">Continent 8 Technologies Tops Gamblingiqs Security 10 Rankings</a></br></br><a href="https://iomtoday.co.im/news/four-further-steam-packet-sailings-in-doubt-due-to-adverse-weather-forecast-872070">Four Further Steam Packet Sailings In Doubt Due To Adverse Weather Forecast</a></br></br><a href="https://iomtoday.co.im/news/business/abacus-trust-group-grows-team-with-key-appointments-872169">Abacus Trust Group Grows Team With Key Appointments</a></br></br><a href="https://iomtoday.co.im/news/courts/mother-jailed-after-shaking-baby-causing-life-long-injuries-871911">Mother Jailed After Shaking Baby Causing Life Long Injuries</a></br></br><a href="https://iomtoday.co.im/news/business/lloyds-international-renews-sponsorship-with-iod-isle-of-man-for-2026-872189">Lloyds International Renews Sponsorship With Iod Isle Of Man For 2026</a></br></br><a href="https://iomtoday.co.im/news/mlc-says-place-to-call-home-is-a-basic-human-right-872039">Mlc Says Place To Call Home Is A Basic Human Right</a></br></br><a href="https://iomtoday.co.im/news/tynwald-backs-minimum-wage-u-turn-871643">Tynwald Backs Minimum Wage U Turn</a></br></br><a href="https://iomtoday.co.im/news/met-office-issue-fresh-16-hour-weather-alert-as-strong-winds-continue-872180">Met Office Issue Fresh 16 Hour Weather Alert As Strong Winds Continue</a></br></br><a href="https://iomtoday.co.im/news/armed-police-called-to-incident-near-peel-as-an-arrest-is-made-872164">Armed Police Called To Incident Near Peel As An Arrest Is Made</a></br></br><a href="https://iomtoday.co.im/news/motorcyclist-admits-eight-driving-offences-872125">Motorcyclist Admits Eight Driving Offences</a></br></br><a href="https://iomtoday.co.im/news/mhk-resigns-as-political-member-of-two-departments-following-reshuffle-872046">Mhk Resigns As Political Member Of Two Departments Following Reshuffle</a></br></br><a href="https://iomtoday.co.im/news/new-strategy-for-disposal-of-dredged-marina-silt-goes-before-planners-871930">New Strategy For Disposal Of Dredged Marina Silt Goes Before Planners</a></br></br><a href="https://iomtoday.co.im/news/tv-star-noel-edmonds-launches-isle-of-man-exclusive-wine-range-871900">Tv Star Noel Edmonds Launches Isle Of Man Exclusive Wine Range</a></br></br><a href="https://iomtoday.co.im/news/isle-of-man-met-office-says-2025-was-the-second-warmest-on-record-871980">Isle Of Man Met Office Says 2025 Was The Second Warmest On Record</a></br></br><a href="https://iomtoday.co.im/news/latest-beach-cleaning-event-in-north-of-island-this-weekend-872108">Latest Beach Cleaning Event In North Of Island This Weekend</a></br></br><a href="https://iomtoday.co.im/news/entertainment/full-list-of-gigs-karaokes-and-discos-in-the-isle-of-man-this-week-871528">Full List Of Gigs Karaokes And Discos In The Isle Of Man This Week</a></br></br><a href="https://iomtoday.co.im/news/former-chief-minister-says-new-ministers-will-have-to-work-quickly-after-comin-reshuffle-872057">Former Chief Minister Says New Ministers Will Have To Work Quickly After Comin Reshuffle</a></br></br><a href="https://iomtoday.co.im/news/ms-submits-plans-for-new-signs-as-part-of-douglas-store-refurb-872015">Ms Submits Plans For New Signs As Part Of Douglas Store Refurb</a></br></br><a href="https://iomtoday.co.im/news/fans-divided-as-fc-isle-of-man-field-first-off-island-player-872019">Fans Divided As Fc Isle Of Man Field First Off Island Player</a></br></br><a href="https://iomtoday.co.im/news/public-invited-to-share-views-at-autism-spectrum-condition-meetings-872001">Public Invited To Share Views At Autism Spectrum Condition Meetings</a></br></br><a href="https://iomtoday.co.im/news/three-isle-of-man-local-authorities-announce-2026-rate-changes-871932">Three Isle Of Man Local Authorities Announce 2026 Rate Changes</a></br></br><a href="https://iomtoday.co.im/news/tributes-paid-to-ramsey-born-eminent-cancer-researcher-professor-david-radcliffe-871968">Tributes Paid To Ramsey Born Eminent Cancer Researcher Professor David Radcliffe</a></br></br><a href="https://iomtoday.co.im/news/audiology-drop-in-clinics-resume-871967">Audiology Drop In Clinics Resume</a></br></br><a href="https://iomtoday.co.im/news/new-practice-organ-for-isle-of-man-cathedral-871939">New Practice Organ For Isle Of Man Cathedral</a></br></br><a href="https://iomtoday.co.im/news/contractor-clarifies-position-with-20mph-signs-871806">Contractor Clarifies Position With 20mph Signs</a></br></br><a href="https://iomtoday.co.im/news/entertainment/from-ramsey-to-la-meet-the-award-winning-voice-artist-from-the-isle-of-man-871206">From Ramsey To La Meet The Award Winning Voice Artist From The Isle Of Man</a></br></br><a href="https://iomtoday.co.im/news/famous-american-storm-chaser-visits-isle-of-man-to-trace-his-manx-roots-870800">Famous American Storm Chaser Visits Isle Of Man To Trace His Manx Roots</a></br></br><a href="https://iomtoday.co.im/news/drink-driver-sentenced-to-community-service-after-crash-that-broke-womens-foot-871682">Drink Driver Sentenced To Community Service After Crash That Broke Womens Foot</a></br></br><a href="https://iomtoday.co.im/news/tributes-paid-to-isle-of-man-business-leader-and-charity-chair-871195">Tributes Paid To Isle Of Man Business Leader And Charity Chair</a></br></br><a href="https://iomtoday.co.im/news/fresh-weather-warning-issued-as-strong-winds-hit-the-island-871796">Fresh Weather Warning Issued As Strong Winds Hit The Island</a></br></div><div class="column"><a href="https://gef.im/news/sport/ravens-fielding-first-non-island-player-sparks-reaction-56569/">Ravens Fielding First Non Island Player Sparks Reaction</a></br></br><a href="https://gef.im/news/travel/four-sailings-in-doubt-56567/">Four Sailings In Doubt</a></br></br><a href="https://gef.im/news/sport/pe-to-pbs-st-ninians-gym-gets-an-upgrade-56156/">Pe To Pbs St Ninians Gym Gets An Upgrade</a></br></br><a href="https://gef.im/news/sport/end-of-the-road-for-mgp-supporters-club-56126/">End Of The Road For Mgp Supporters Club</a></br></div></div></body></html>
+
+<div class="container">
+
+  <!-- Banner / Advertisement space -->
+  <header class="banner">
+    <h1>NASA Report</h1>
+    <p>Quality headlines from trusted sources • Updated live</p>
+    <!-- You can replace this whole block with real ad code -->
+    <!-- <div style="height:90px; background:#e0e0e0; margin:30px auto; max-width:728px; border-radius:8px;">
+      [ Advertisement / Leaderboard 728×90 ]
+    </div> -->
+  </header>
+
+  <!-- Three-column news layout -->
+  <main class="news-grid">
+<div class="column"><div class="column-header">Manx News</div><div class="story-list">
+<div class="story"><a href="https://www.manx.news/police-appeal-after-incident-outside-bar/">Police Appeal After Incident Outside Bar</a></div>
+
+<div class="story"><a href="https://www.manx.news/colby-roadworks-extended/">Colby Roadworks Extended</a></div>
+
+<div class="story"><a href="https://www.manx.news/podcast-colonial-roots-modern-failures-the-truth-about-manx-politics/">Podcast Colonial Roots Modern Failures The Truth About Manx Politics</a></div>
+
+<div class="story"><a href="https://www.manx.news/judes-indoor-sports-competition-returns/">Judes Indoor Sports Competition Returns</a></div>
+
+<div class="story"><a href="https://www.manx.news/stevie-wonder/">Stevie Wonder</a></div>
+
+<div class="story"><a href="https://www.manx.news/podcast-colonial-roots-modern-failures-the-truth-about-manx-politics/">Podcast Colonial Roots Modern Failures The Truth About Manx Politics</a></div>
+
+<div class="story"><a href="https://www.manx.news/judes-indoor-sports-competition-returns/">Judes Indoor Sports Competition Returns</a></div>
+
+<div class="story"><a href="https://www.manx.news/stevie-wonder/">Stevie Wonder</a></div>
+
+<div class="story"><a href="https://www.manx.news/school-disco-classics-return-for-sight-matters-sing-a-long/">School Disco Classics Return For Sight Matters Sing A Long</a></div>
+
+<div class="story"><a href="https://www.manx.news/window-wanderland-returns-with-a-manx-twist/">Window Wanderland Returns With A Manx Twist</a></div>
+
+<div class="story"><a href="https://www.manx.news/police-appeal-after-incident-outside-bar/">Police Appeal After Incident Outside Bar</a></div>
+
+<div class="story"><a href="https://www.manx.news/colby-roadworks-extended/">Colby Roadworks Extended</a></div>
+
+<div class="story"><a href="https://www.manx.news/school-disco-classics-return-for-sight-matters-sing-a-long/">School Disco Classics Return For Sight Matters Sing A Long</a></div>
+
+<div class="story"><a href="https://www.manx.news/window-wanderland-returns-with-a-manx-twist/">Window Wanderland Returns With A Manx Twist</a></div>
+
+<div class="story"><a href="https://www.manx.news/farmers-hit-back-we-were-kept-in-the-dark/">Farmers Hit Back We Were Kept In The Dark</a></div>
+
+<div class="story"><a href="https://www.manx.news/community-resilience-drop-in-event-planned-for-andreas/">Community Resilience Drop In Event Planned For Andreas</a></div>
+
+<div class="story"><a href="https://www.manx.news/wind-orchestra-school-band-join-forces/">Wind Orchestra School Band Join Forces</a></div>
+
+<div class="story"><a href="https://www.manx.news/smile-dentist-to-temporarily-relocate-again/">Smile Dentist To Temporarily Relocate Again</a></div>
+
+<div class="story"><a href="https://www.manx.news/mhk-seeks-details-on-govt-recruitment/">Mhk Seeks Details On Govt Recruitment</a></div>
+
+<div class="story"><a href="https://www.manx.news/judes-indoor-sports-competition-returns/">Judes Indoor Sports Competition Returns</a></div>
+
+<div class="story"><a href="https://www.manx.news/stevie-wonder/">Stevie Wonder</a></div>
+
+<div class="story"><a href="https://www.manx.news/woodward-qualifies-for-national-indoors/">Woodward Qualifies For National Indoors</a></div>
+
+<div class="story"><a href="https://www.manx.news/douglas-aiming-to-get-back-to-winning-ways/">Douglas Aiming To Get Back To Winning Ways</a></div>
+
+<div class="story"><a href="https://www.manx.news/higgins-crowned-nwcfl-player-of-the-month/">Higgins Crowned Nwcfl Player Of The Month</a></div>
+
+<div class="story"><a href="https://www.manx.news/rodd-in-six-nations-squad/">Rodd In Six Nations Squad</a></div>
+
+<div class="story"><a href="https://www.manx.news/podcast-colonial-roots-modern-failures-the-truth-about-manx-politics/">Podcast Colonial Roots Modern Failures The Truth About Manx Politics</a></div>
+
+<div class="story"><a href="https://www.manx.news/controllers-flee-toxic-tower-staff-exodus-hits-ronaldsway/">Controllers Flee Toxic Tower Staff Exodus Hits Ronaldsway</a></div>
+
+<div class="story"><a href="https://www.manx.news/sackings-were-needed-to-reset-government-direction/">Sackings Were Needed To Reset Government Direction</a></div>
+
+<div class="story"><a href="https://www.manx.news/the-other-island-the-bbc-documentary-that-caused-outrage/">The Other Island The Bbc Documentary That Caused Outrage</a></div>
+
+<div class="story"><a href="https://www.manx.news/wtf-a-business-owners-guide-to-heart-surgery/">Wtf A Business Owners Guide To Heart Surgery</a></div>
+
+<div class="story"><a href="https://www.manx.news/douglas-aiming-to-get-back-to-winning-ways/">Douglas Aiming To Get Back To Winning Ways</a></div>
+
+<div class="story"><a href="https://www.manx.news/council-to-remove-replace-trees-on-safety-grounds/">Council To Remove Replace Trees On Safety Grounds</a></div>
+
+<div class="story"><a href="https://www.manx.news/shorter-hours-but-not-closures/">Shorter Hours But Not Closures</a></div>
+
+<div class="story"><a href="https://www.manx.news/court-upholds-suspended-sentence/">Court Upholds Suspended Sentence</a></div>
+</div></div><div class="column"><div class="column-header">IOM Today</div><div class="story-list">
+<div class="story"><a href="https://iomtoday.co.im/news/man-banned-from-driving-for-seven-years-after-drink-driving-incidents-872539">Man Banned From Driving For Seven Years After Drink Driving Incidents</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/airports-distinct-concrete-wings-logo-disappear-amid-claims-of-no-drama-872619">Airports Distinct Concrete Wings Logo Disappear Amid Claims Of No Drama</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/two-further-isle-of-man-steam-packet-sailings-cancelled-due-to-strong-winds-872596">Two Further Isle Of Man Steam Packet Sailings Cancelled Due To Strong Winds</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/public-invited-to-tour-mannin-cancers-new-ps24m-help-centre-at-open-day-860958">Public Invited To Tour Mannin Cancers New Ps24m Help Centre At Open Day</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/new-year-same-tech-869316">New Year Same Tech</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/prom-church-marks-50th-anniversary-with-launch-of-new-community-hub-872344">Prom Church Marks 50th Anniversary With Launch Of New Community Hub</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/man-admits-stealing-ps66000-from-civic-site-872524">Man Admits Stealing Ps66000 From Civic Site</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/met-office-issues-new-weather-warning-for-coastal-overtopping-872597">Met Office Issues New Weather Warning For Coastal Overtopping</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/isle-of-man-duo-to-attempt-3200-mile-row-across-the-atlantic-872293">Isle Of Man Duo To Attempt 3200 Mile Row Across The Atlantic</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/business/meet-the-14-year-old-islander-who-impressed-a-car-dealership-with-a-simple-question-872285">Meet The 14 Year Old Islander Who Impressed A Car Dealership With A Simple Question</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/entertainment/west-end-hit-come-from-away-set-for-gaiety-theatre-stage-871284">West End Hit Come From Away Set For Gaiety Theatre Stage</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/courts/teen-charged-with-intent-to-commit-murder-refuses-to-appear-in-court-872551">Teen Charged With Intent To Commit Murder Refuses To Appear In Court</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/entertainment/book-review-the-perfect-pocket-companion-to-exploring-the-island-871282">Book Review The Perfect Pocket Companion To Exploring The Island</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/meet-the-man-who-hardly-sleeps-to-keep-islanders-up-to-date-with-the-weather-872400">Meet The Man Who Hardly Sleeps To Keep Islanders Up To Date With The Weather</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/appeal-judges-quash-jackson-pauls-death-by-dangerous-conviction-872414">Appeal Judges Quash Jackson Pauls Death By Dangerous Conviction</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/courts/appeal-judges-dismiss-bid-to-increase-drug-dealers-sentence-872355">Appeal Judges Dismiss Bid To Increase Drug Dealers Sentence</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/up-to-39-trees-set-to-be-chopped-down-in-douglas-following-approval-872538">Up To 39 Trees Set To Be Chopped Down In Douglas Following Approval</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/search-ends-happily-as-missing-dachshund-toffee-is-located-872515">Search Ends Happily As Missing Dachshund Toffee Is Located</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/four-more-steam-packet-sailings-in-doubt-this-weekend-as-windy-conditions-continue-872468">Four More Steam Packet Sailings In Doubt This Weekend As Windy Conditions Continue</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/entertainment/enjoy-music-and-a-coffee-morning-courtesy-of-sulby-methodist-church-872359">Enjoy Music And A Coffee Morning Courtesy Of Sulby Methodist Church</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/farming/survey-launched-for-isle-of-man-farmers-feedback-on-sheep-worrying-872526">Survey Launched For Isle Of Man Farmers Feedback On Sheep Worrying</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/onchan-man-admits-possessing-52-indecent-images-of-children-872097">Onchan Man Admits Possessing 52 Indecent Images Of Children</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/public-asked-to-get-in-touch-regarding-milestone-birthdays-and-anniversaries-872405">Public Asked To Get In Touch Regarding Milestone Birthdays And Anniversaries</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/business/new-head-of-private-banking-at-nedbank-private-wealth-872416">New Head Of Private Banking At Nedbank Private Wealth</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/ps10000-grant-supports-new-cpr-device-for-air-ambulance-transfers-872378">Ps10000 Grant Supports New Cpr Device For Air Ambulance Transfers</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/rodd-named-in-england-squad-for-six-nations-872348">Rodd Named In England Squad For Six Nations</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/entertainment/isle-of-man-rockers-silo-land-london-record-deal-ahead-of-debut-release-872302">Isle Of Man Rockers Silo Land London Record Deal Ahead Of Debut Release</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/business/continent-8-technologies-tops-gamblingiqs-security-10-rankings-872280">Continent 8 Technologies Tops Gamblingiqs Security 10 Rankings</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/four-further-steam-packet-sailings-in-doubt-due-to-adverse-weather-forecast-872070">Four Further Steam Packet Sailings In Doubt Due To Adverse Weather Forecast</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/business/abacus-trust-group-grows-team-with-key-appointments-872169">Abacus Trust Group Grows Team With Key Appointments</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/business/lloyds-international-renews-sponsorship-with-iod-isle-of-man-for-2026-872189">Lloyds International Renews Sponsorship With Iod Isle Of Man For 2026</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/mlc-says-place-to-call-home-is-a-basic-human-right-872039">Mlc Says Place To Call Home Is A Basic Human Right</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/met-office-issue-fresh-16-hour-weather-alert-as-strong-winds-continue-872180">Met Office Issue Fresh 16 Hour Weather Alert As Strong Winds Continue</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/armed-police-called-to-incident-near-peel-as-an-arrest-is-made-872164">Armed Police Called To Incident Near Peel As An Arrest Is Made</a>
+</div>
+<div class="story"><a href="https://iomtoday.co.im/news/motorcyclist-admits-eight-driving-offences-872125">Motorcyclist Admits Eight Driving Offences</a>
+</div></div></div><div class="column"><div class="column-header">GEF</div><div class="story-list">
+<div class="story"><a href="https://gef.im/news/community/dont-forget-gran-government-house-needs-a-nudge-for-birthday-cards-56613/">Dont Forget Gran Government House Needs A Nudge For Birthday Cards</a>
+</div>
+<div class="story"><a href="https://gef.im/news/community/blast-from-manx-retail-past-washes-up-on-a-scottish-beach-56597/">Blast From Manx Retail Past Washes Up On A Scottish Beach</a>
+</div>
+<div class="story"><a href="https://gef.im/news/sport/sports-awards-shortlist-as-manx-stars-battle-for-top-honours-56486/">Sports Awards Shortlist As Manx Stars Battle For Top Honours</a>
+</div>
+<div class="story"><a href="https://gef.im/news/sport/pe-to-pbs-st-ninians-gym-gets-an-upgrade-56156/">Pe To Pbs St Ninians Gym Gets An Upgrade</a>
+</div></div></div>
+  </main>
+
+</div>
+
+</body>
+</html>

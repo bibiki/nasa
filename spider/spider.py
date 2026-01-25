@@ -1,7 +1,7 @@
 from manx_crawler import crawl_manx
 from gef_crawler import crawl_gef
 from iomtoday_crawler import crawl_iomtoday
-
+from layout import head, footer
 headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET",
@@ -16,33 +16,8 @@ url = "https://www.iomtoday.co.im/news"
 result += "<div class=\"column\">"+crawl_iomtoday(url, headers)+"</div>"
 url = "https://gef.im/"
 result += "<div class=\"column\">"+crawl_gef(url, headers)+"</div>"
-result = "<div class=\"container\">"+result+"</div>"
 
-result = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <style>
-    .container {
-      display: flex;
-      gap: 16px;
-      padding: 20px;
-      max-width: 900px;
-      margin: 20px auto;
-    }
-    .column {
-      flex: 1;
-      background: #e3f2fd;
-      padding: 24px;
-      border-radius: 8px;
-      text-align: center;
-      font-family: system-ui, sans-serif;
-    }
-  </style>
-</head>
-<body>
-""" + result + "</body></html>"
+result = head + result + footer
 
 with open("../docs/index.html", "w", encoding="utf-8") as f:
     f.write("".join(result))

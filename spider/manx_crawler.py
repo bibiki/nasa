@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_manx(link):
-    return "<a href=\""+link+"\">"+headline_manx(link)+"</a></br>"
+    return "<div class=\"story\"><a href=\""+link+"\">"+headline_manx(link)+"</a></div>\n"
 
 def headline_manx(link):
     res = link[22:].split("-")
@@ -18,4 +18,4 @@ def crawl_manx(url, headers):
         if "javascript" not in e['href']:
             result.append(e['href'])
     result = map(mapper_manx, result)
-    return "</br>".join(result)
+    return "<div class=\"column-header\">Manx News</div><div class=\"story-list\">\n" + "\n".join(result)  + "</div>"

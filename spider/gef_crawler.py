@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_gef(link):
-    return "<a href=\""+link+"\">"+headline_gef(link)+"</a></br>"
+    return "<div class=\"story\"><a href=\""+link+"\">"+headline_gef(link)+"</a>\n</div>"
 
 def headline_gef(link):
     res = link[21:].split("-")
@@ -20,4 +20,5 @@ def crawl_gef(url, headers):
     for e in soup.select("div.mvp-widget-feat2-right a"):
         result.append(e['href'])
     result = map(mapper_gef, result)
-    return "</br>".join(result)
+    #return "</br>".join(result)
+    return "<div class=\"column-header\">GEF</div><div class=\"story-list\">\n" + "\n".join(result) + "</div>"

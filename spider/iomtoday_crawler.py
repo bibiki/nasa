@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_iomtoday(link):
-    return "<a href=\""+link+"\">"+headline_iomtoday(link)+"</a></br>"
+    return "<div class=\"story\"><a href=\""+link+"\">"+headline_iomtoday(link)+"</a>\n</div>"
 
 def headline_iomtoday(link):
     res = link[28:].split("-")
@@ -21,4 +21,5 @@ def crawl_iomtoday(url, headers):
         if 'class' not in e and "news" in e['href'] and e['href'][-1] in "0123456789":
             result.append("https://iomtoday.co.im" + e['href'])
     result = map(mapper_iomtoday, result)
-    return "</br>".join(result)
+    #return "</br>".join(result)
+    return "<div class=\"column-header\">IOM Today</div><div class=\"story-list\">\n" + "\n".join(result) + "</div>"
