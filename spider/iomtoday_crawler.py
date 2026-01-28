@@ -1,11 +1,10 @@
 import html
 import requests
+from common import story_div
 from bs4 import BeautifulSoup
 
 def mapper_iomtoday(link):
-    return f"""<div class="story">
-                <a href="{link}">{headline_iomtoday(link)}</a>
-               </div>"""
+    return story_div(link, headline_iomtoday)
 
 def headline_iomtoday(link):
     res = link[28:].split("-")

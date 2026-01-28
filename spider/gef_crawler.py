@@ -1,11 +1,10 @@
 import html
 import requests
+from common import story_div
 from bs4 import BeautifulSoup
 
 def mapper_gef(link):
-    return f"""<div class="story">
-                <a href="{link}">{headline_gef(link)}</a>
-               </div>"""
+    return story_div(link, headline_gef)
 
 def headline_gef(link):
     res = link[21:].split("-")

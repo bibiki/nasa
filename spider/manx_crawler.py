@@ -1,11 +1,10 @@
 import html
 import requests
+from common import story_div
 from bs4 import BeautifulSoup
 
 def mapper_manx(link):
-    return f"""<div class="story">
-                <a href="{link}">{headline_manx(link)}</a>
-               </div>"""
+    return story_div(link, headline_manx)
 
 def headline_manx(link):
     res = link[22:].split("-")
