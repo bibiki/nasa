@@ -3,7 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_iomtoday(link):
-    return "<div class=\"story\"><a href=\""+link+"\">"+headline_iomtoday(link)+"</a>\n</div>"
+    return f"""<div class="story">
+                <a href="{link}">{headline_iomtoday(link)}</a>
+               </div>"""
 
 def headline_iomtoday(link):
     res = link[28:].split("-")

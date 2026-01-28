@@ -3,7 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_gef(link):
-    return "<div class=\"story\"><a href=\""+link+"\">"+headline_gef(link)+"</a>\n</div>"
+    return f"""<div class="story">
+                <a href="{link}">{headline_gef(link)}</a>
+               </div>"""
 
 def headline_gef(link):
     res = link[21:].split("-")

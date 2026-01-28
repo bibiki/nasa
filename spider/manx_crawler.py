@@ -3,7 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 
 def mapper_manx(link):
-    return "<div class=\"story\"><a href=\""+link+"\">"+headline_manx(link)+"</a></div>\n"
+    return f"""<div class="story">
+                <a href="{link}">{headline_manx(link)}</a>
+               </div>"""
 
 def headline_manx(link):
     res = link[22:].split("-")
